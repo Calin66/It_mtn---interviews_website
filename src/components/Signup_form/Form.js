@@ -3,7 +3,7 @@ import FormSignup from "./FormSignup";
 import FormLogin from "./FormLogin";
 import "./Form.css";
 import { Link } from "react-router-dom";
-import { IoClose } from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../firebase";
 const Form = () => {
@@ -27,20 +27,12 @@ const Form = () => {
   return (
     <div className="container-sign-login">
       <div className="form-container">
-        <Link
-          to="/"
-          style={{
-            backgroundColor: "white",
-            width: "fit-content",
-            height: "fit-content",
-            position: "absolute",
-            right: "5%",
-            top: "5%",
-          }}
-        >
-          <span className="close-btn">
-            <IoClose style={{ fontSize: "35px" }} />
-          </span>
+        <Link to="/" className="close-btn">
+          <AiOutlineClose
+            style={{
+              fontSize: "30px",
+            }}
+          />
         </Link>
         <div className="form-content-left">
           <img src="img/img-2.svg" alt="spaceship" className="form-img" />
@@ -48,7 +40,7 @@ const Form = () => {
         {!login ? (
           <FormSignup toLogin={toLogin} submitForm={submitForm} />
         ) : (
-          <FormLogin />
+          <FormLogin toLogin={toLogin} />
         )}
       </div>
     </div>

@@ -73,7 +73,10 @@ const FormSignup = ({ toLogin, submitForm }) => {
           Sign up
         </button>
         <span className="form-input-login">
-          Ai deja un cont? Login <a href="#">aici</a>
+          Ai deja un cont? Login{" "}
+          <a style={{ cursor: "pointer" }} onClick={toLogin}>
+            aici
+          </a>
         </span>
       </form>
     </div>
