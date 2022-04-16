@@ -1,0 +1,43 @@
+.navbar-container{
+    width: 100%;
+    padding: 20px 5%;
+    height: fit-content;
+    background-color: #232931;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 14px;
+    align-items: center;
+}
+.navbar-left{
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+}
+.navbar-bt{
+    background-color: transparent;
+    transition: background 250ms ease;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.3% 1.5%;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 1px solid #4ECCA3;
+    cursor:pointer;
+    color: white;
+    text-decoration: none;
+
+} 
+.navbar-bt:hover{
+    background-color: #4ECCA3;
+  }
+  @media only screen and (max-width:900px){
+    .navbar-container{
+        font-size: 11px;
+    }
+    .navbar-left{
+        width: 70%;
+        line-height: 20px;
+    }
+  }
