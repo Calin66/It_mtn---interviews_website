@@ -1,0 +1,45 @@
+
+#informatii {
+    font-style: 25px;
+    color:aqua;
+    top: 6px;
+    left: 10px;
+    text-align:start;
+    margin: 50px;
+    outline: height 40px;
+}
+
+#cunostinte{
+    outline:height 40px;
+}
+
+#poze {
+    object-fit: cover;
+    width: 20%;
+    height: 200px;
+    margin: 50px;
+}
+#titlu{
+    
+font-size: 35px;
+color: whitesmoke;
+margin-bottom: 20px;
+}
+#content{
+    color: whitesmoke;
+    width: 800px;
+    height: 400px;
+    padding: 30px;
+    background-color: black;
+    opacity: 80%;
+    position: absolute;
+    top:476px;
+    left:0px;
+}
+#content li{
+    font-size: 25px;
+}
+#sponsori{
+    background-color: white;
+    margin-top: 120px;
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { signup, login } from "../../firebase";
+import { signup, login, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 const useForm = (log, callback, validate) => {
   const [values, setValues] = useState({
     username: "",
@@ -10,8 +12,6 @@ const useForm = (log, callback, validate) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [ok, setok] = useState(false);
-  let navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +27,9 @@ const useForm = (log, callback, validate) => {
   };
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      signup(values.email, values.password).catch(function (error) {
+      const result = signup(values.email, values.password).catch(function (
+        error
+      ) {
         let errorCode = error.code;
         if (errorCode == "auth/email-already-in-use") {
           log();

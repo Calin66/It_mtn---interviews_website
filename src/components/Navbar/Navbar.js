@@ -7,10 +7,12 @@ import { BiExit } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../firebase";
 
+import { BiMessageAlt } from "react-icons/bi";
+import { FiBell } from "react-icons/fi";
 const Navbar = () => {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
- 
+
   const currentUser = useAuth();
   const [openSide, setOpenSide] = useState(false);
   async function handleLogout() {
@@ -28,7 +30,15 @@ const Navbar = () => {
       <div style={{ display: "flex", alignItems: "center" }}>
         <Link to="/" style={{ textDecoration: "none", marginRight: "100px" }}>
           <div id="logo_sigla">
-            {/* <img src="img/logo.png" style={{height:"100px"}} /> */}
+            <img
+              src="img/logo.png"
+              style={{
+                height: "35px",
+                position: "absolute",
+                left: "40px",
+                top: "20px",
+              }}
+            />
             <h1>Internship Assistant</h1>
           </div>
         </Link>
@@ -44,26 +54,68 @@ const Navbar = () => {
           <button id="sign">Sign up!</button>
         </Link>
       ) : (
-        <div id="user-container">
-          <div className="user-name-icon" onClick={() => setOpenSide(true)}>
-            <p className="user-name">Acica</p>
-            <FaRegUserCircle className="user-icon" />
-          </div>
-          <div id="user-options">
-            <p>Detalii cont</p>
-            <p>Favorite</p>
-            <p>Cv</p>
-            <p id="logout" onClick={handleLogout}>
-              Log out
-              <BiExit
+        <div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginRight: "200px",
+            }}
+          >
+            <div id="notifications">
+              <FiBell
+                id="bell"
+                className="user-icon"
                 style={{
-                  fontSize: "24px",
-                  position: "relative",
-                  top: "6px",
-                  left: "10px",
+                  fontSize: "27px",
+                  position: "absolute",
+                  right: "500px",
+                  top: "25px",
+                  cursor: "pointer",
                 }}
               />
-            </p>
+            </div>
+            <BiMessageAlt
+              className="user-icon"
+              style={{
+                color: "white",
+                fontSize: "30px",
+                marginRight: "130px",
+                position: "relative",
+                top: "1px",
+                cursor: "pointer",
+              }}
+            />
+          </div>
+          <div id="user-container">
+            <div className="user-name-icon" onClick={() => setOpenSide(true)}>
+              <p className="user-name">Acica</p>
+              <FaRegUserCircle className="user-icon" />
+            </div>
+            <div id="user-options">
+              <p>Mesaje</p>
+              <p>Notificari</p>
+              <Link
+                to="/detaliicont"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <p>User details </p>
+              </Link>
+              <p>Done</p>
+              <p>Saved</p>
+
+              <p id="logout" onClick={handleLogout}>
+                Logout
+                <BiExit
+                  style={{
+                    fontSize: "24px",
+                    position: "relative",
+                    top: "6px",
+                    left: "10px",
+                  }}
+                />
+              </p>
+            </div>
           </div>
         </div>
       )}
