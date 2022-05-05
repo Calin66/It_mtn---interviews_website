@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { signup, login, db } from "../../firebase";
+import { signup, login, db, useAuth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { collection, onSnapshot } from "firebase/firestore";
+import { getAuth, updateProfile } from "firebase/auth";
 const useForm = (log, callback, validate) => {
   const [values, setValues] = useState({
     username: "",
@@ -25,18 +26,25 @@ const useForm = (log, callback, validate) => {
     setErrors(validate(values));
     setIsSubmitting(true);
   };
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      const result = signup(values.email, values.password).catch(function (
-        error
-      ) {
-        let errorCode = error.code;
-        if (errorCode == "auth/email-already-in-use") {
-          log();
-          alert("Email deja inregistrat");
-        }
-      });
-      log();
+      const result = async () => {
+        await signup(values.email, values.password).catch(function (error) {
+          let errorCode = error.code;
+          if (errorCode == "auth/email-already-in-use") {
+            alert("Email deja inregistrat");
+          }
+        });
+        const displayName = values.username;
+        const auth = getAuth();
+        const user = auth.currentUser;
+        console.log(user);
+        updateProfile(user, { displayName });
+        navigate("/");
+      };
+      result();
     }
   }, [errors]);
 
@@ -51,7 +59,6 @@ export const LoginForm = (callback, validate) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  let navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

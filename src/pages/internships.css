@@ -6,6 +6,8 @@
     padding: 80px;
     color: white;
     position: relative;
+    height: 500px;
+    width: 50%;
 }
 .oferta-container div{
     display: flex;

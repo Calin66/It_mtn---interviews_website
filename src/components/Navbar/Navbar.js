@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./navbar.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useAuth } from "../../firebase";
@@ -9,6 +9,7 @@ import { logout } from "../../firebase";
 
 import { BiMessageAlt } from "react-icons/bi";
 import { FiBell } from "react-icons/fi";
+import { getAuth } from "firebase/auth";
 const Navbar = () => {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
@@ -24,7 +25,6 @@ const Navbar = () => {
     }
     setLoading(false);
   }
-
   return (
     <div id="navigatie">
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -89,7 +89,9 @@ const Navbar = () => {
           </div>
           <div id="user-container">
             <div className="user-name-icon" onClick={() => setOpenSide(true)}>
-              <p className="user-name">Acica</p>
+              <p className="user-name">
+                {currentUser.displayName ? currentUser.displayName : "Username"}
+              </p>
               <FaRegUserCircle className="user-icon" />
             </div>
             <div id="user-options">

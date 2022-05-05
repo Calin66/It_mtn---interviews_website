@@ -76,7 +76,7 @@ const DetaliiCont = () => {
                 <AiFillStar />
                 <AiFillStar style={{ color: "grey" }} />
               </div>
-              <a
+              <Link
                 style={{
                   color: "black",
                   textDecoration: "none",
@@ -84,11 +84,10 @@ const DetaliiCont = () => {
                   fontSize: "25px",
                   borderBottom: "1px solid grey",
                 }}
-                href="https://docs.google.com/forms/d/e/1FAIpQLScXLENERjB2AtX3JPxuHs9eFUBd6T-QRy5bmeQpgFcS9gU__g/viewform?usp=sf_link"
-                target="_blank"
+                to="/creeazacv"
               >
                 Create CV
-              </a>
+              </Link>
               <h1 style={{ marginTop: "20px", marginBottom: "20px" }}>
                 Integrations
               </h1>

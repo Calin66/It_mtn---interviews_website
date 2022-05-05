@@ -5,6 +5,7 @@ import Sign from "./pages/Sign";
 import Form from "./components/Signup_form/Form";
 import DetaliiCont from "./pages/DetaliiCont";
 import Internships from "./pages/Internships";
+import Postare from "./pages/CreeazaCV";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signup" element={<Form />} />
         <Route path="/detaliicont" element={<DetaliiCont />} />
         <Route path="/internships" element={<Internships />} />
+        <Route path="/creeazacv" element={<Postare/>} />
       </Routes>
     </Router>
   );

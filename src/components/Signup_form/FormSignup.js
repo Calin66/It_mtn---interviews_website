@@ -20,7 +20,7 @@ const FormSignup = ({ toLogin, submitForm }) => {
           mai jos pentru a incepe!
         </h1>
         <div className="form-inputs">
-          <label className="form-label">Nume utilizator</label>
+          <label className="form-label">Username</label>
           <input
             className="form-input"
             type="text"

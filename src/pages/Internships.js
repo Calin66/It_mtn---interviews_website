@@ -111,7 +111,9 @@ const Internships = () => {
                   <div className="oferta-container">
                     <h1>{job.title}</h1>
                     <div style={{ marginBottom: "30px" }}>
-                      <BsBuilding id="b-icon" />
+                      <BsBuilding
+                        id="b-icon"
+                      />
                       <h2>{job.comp}</h2>
                     </div>
                     <div>
@@ -142,6 +144,7 @@ const Internships = () => {
                         position: "absolute",
                         right: "2%",
                         top: "3%",
+                        
                       }}
                     />
                     {!job.done ? (
